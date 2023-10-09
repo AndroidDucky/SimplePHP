@@ -1,0 +1,51 @@
+h1,
+h2 {
+  margin: 0pt;
+}
+
+#header {
+  width: 100%;
+  background-color: blue;
+  padding: 45px 0;
+  color: white;
+  text-align: center;
+  font-size: x-large;
+}
+
+body {
+  margin: 20pt;
+}
+
+#ls {
+  float: left;
+  width: 15%;
+  height: 80%;
+  background-color: cyan;
+  font-size: x-large;
+}
+
+#main {
+  float: left;
+  width: 70%;
+  height: 80%;
+  background-color: white;
+  inline-size: :50px;
+  font-size: x-large;
+}
+
+#footer {
+  width: 100%;
+  color: white;
+  background-color: blue;
+  clear: both;
+  text-align: center;
+  padding: 5px;
+}
+
+/*
+  classes for links
+*/
+.red-link {
+  color: white;
+  text-decoration: none;
+}

@@ -1,0 +1,121 @@
+<html>
+<head>
+<meta http-equiv="refresh" content="5000">
+<style>
+td {text-align:center;}
+</style>
+<script>
+  var theMonths= new Array("January", 'February', 'March', 'April', 'May', 'June', 'July', 
+  'August', 'September', 'October','November','December');
+
+
+   function Calendar(year, month)
+{
+   mc=month;
+    month=month;
+    var date= new Date(year, month);
+
+  var d= date.getDay();
+
+  var curr=new Date();
+  
+  var str="<table border bgcolor=#f8f8f8 align=center><caption>"+ "</caption>"+          
+     "<tr><th colspan='7' style='text-align:center'><input type='text' id='textBox' size=25 value ='"+theMonths[month] +" "+ year +"'></th></tr><tr><th>Sunday</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th></tr><tr>";
+    
+    if(d>0){
+        for (var i=0;i<d;i++){
+            str+="<td></td>";}
+    }
+//start of the mont
+   while(date.getMonth()==month)
+   {
+     //current day
+       if(curr.getDate()==date.getDate() && curr.getMonth()==date.getMonth()&&curr.getFullYear==date.getFullYear){
+        str+="<td bgcolor=red>"+date.getDate()+"</td>";
+        if(date.getDay()==6){
+          str+="</tr><tr>";
+        }
+
+       }
+       //saturday
+       else if(date.getDay()==6){
+       
+        str+="<td>"+date.getDate()+"</td>";
+        str+="</tr><tr>";
+       }
+       //sunday
+       else if(date.getDay()==0){
+       
+       str+="<td bgcolor=blue>"+date.getDate()+"</td>";
+   
+      }
+
+      //normal day
+      else {
+       str+="<td>"+date.getDate()+"</td>";}
+       //move to next day
+       date.setDate(date.getDate()+1);
+   }
+
+if (date.getDate()<=6)
+{
+   for (var i=date.getDay();i<7;i++){
+           str+="<td></td>";}
+}
+   str+="</tr></table>";
+  
+   document.getElementById("Calendar").innerHTML=str;
+
+}
+function Update(){
+  var Month= document.getElementById("month").selectedIndex;
+  var Year= document.getElementById("year").value;
+  Calendar(Year, Month);
+
+
+}
+
+	
+</script>
+</head>
+<body>
+
+  <div id='Calendar' style='position:center; top:100;left:100;'></div> 
+  <center>
+  
+  <select name="Month" id="month">
+    <option value="January" selected>January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option> 
+  </select>
+    <select name="Year" id="year">
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022" selected>2022</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+      <option value="2026">2026</option>
+      <option value="2027">2027</option> 
+    </select>
+  <br><input type="button" onclick="Update();" name="bt" value ="Update Calendar">
+  </center>
+<script>
+Calendar(2022,0);
+</script>
+
+</body>
+</html>

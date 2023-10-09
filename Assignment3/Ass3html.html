@@ -1,0 +1,267 @@
+<html>
+<head>
+
+    <script>
+        function validite(){
+            var msg="";
+            var x=0;
+            var namereg=/^[a-zA-Z]{3,20}$/;
+            var phonereg=/^[0-9]{10}$/;
+            var emailreg=/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
+            var first= document.getElementById("first").value;
+            var father= document.getElementById("father").value;
+            var family= document.getElementById("family").value;
+            var date= document.getElementById("date").value;
+            var nationality= document.getElementById("nationality").selectedIndex;
+            var phone= document.getElementById("phone").value;
+            var mail= document.getElementById("mail").value;
+            var from= document.getElementById("from").selectedIndex;
+            var dateOfArr= document.getElementById("dateOfArr").value;
+            var flight= document.getElementById("flight").value;
+            var gender= document.querySelector('input[name="g"]:checked');
+            var cBox= document.getElementById("cBox");
+            var vax= document.getElementById("vax").selectedIndex;
+            var covid= document.querySelector('input[name="covid"]:checked');
+        
+            if(first==""){
+                msg+=("Check your first name\n");
+                x=-1
+                }
+            else{
+                if(!first.match(namereg)){
+                    msg+=("Invaild First name\n");
+                    x=-1
+                }
+            }
+            if(father==""){
+                msg+=("Check your father name\n");
+                x=-1
+            }
+            else{
+                if(!father.match(namereg)){
+                    msg+=("Invaild Father name \n");
+                    x=-1
+                }
+            }
+
+            if(family==""){
+                msg+=("Check your Family name\n");
+                x=-1
+            }
+            else{
+                if(!family.match(namereg)){
+                    msg+=("Invaild Family name \n");
+                    x=-1
+                }
+            }
+
+            if(date==""){
+                msg+=("Check your Date of birth\n");
+                x=-1
+            }
+
+            if (nationality == 0) {
+                msg += 'Check your nationality\n';
+                x=-1
+            }
+
+            if(!phone.match(phonereg)){
+                msg+=("Check your phone\n");
+                x=-1
+            }
+
+            if(mail==""){
+                msg+=("Check your Email\n");
+                x=-1
+                }
+            else{
+                if(!mail.match(emailreg)){
+                    msg+=("Invalid email\n");
+                    x=-1
+                }
+            }
+
+            if (from == 0) {
+                msg += 'Check your Coming from\n';
+                x=-1
+            }
+
+            if(dateOfArr==""){
+                msg+=("Check your Date of Arrival\n");
+                x=-1
+            }
+
+            if (flight == 0) {
+                msg += 'Check your Flight\n';
+                x=-1
+            }
+
+            if(gender==null){
+                msg+=("Check your gender\n");
+                x=-1
+            }
+
+
+
+            if(!(cBox.checked)){
+                if(!(vax==0)){
+                    document.getElementById("cBox").checked = true;
+                }
+                else{
+                    msg+=("Check your Vaccination check box\n");
+                    if(vax==0){
+                        msg+=("Check your Vaccination\n");
+                    }
+                    x=-1
+                }
+            }
+            else if(cBox.checked){
+                if(vax==0){
+                    msg+=("Vaccination required\n");
+                    x=-1
+
+                }
+            }
+
+
+
+
+            if(covid==null){
+                msg+=("Covid button not checked");
+                document.getElementById("No").checked = true;
+                x=-1
+            }
+
+
+            if(x==-1){
+            alert(msg);
+            }
+
+            
+        }
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <h1>Welcome to united states</h1>
+    <h2>Form validation</h2>
+<form="myform">
+<fieldset> 
+<legend>Personal Information </legend>
+<table>
+<tr>
+<td> First Name: </td>
+<td> <input type="text" id="first" size ="30"  placeholder="First Name"> </td>
+</tr>
+<tr>
+<td> Father Name: </td>
+<td> <input type="text" id="father" size="30" placeholder="Father Name"> </td>
+</tr>
+<tr>
+<td> Family Name: </td>
+<td> <input type="text" id="family" size="30"  placeholder="Family Name"> </td>
+</tr>
+<tr>
+<td> Date of Birth </td>
+
+<td>  <input type="date" id="date" size="30"  placeholder="DD/MM/YYYY"> </td>
+</tr>
+
+<tr>
+<td> Nationality: </td>
+<td> <select id="nationality">
+<option > - Please Select - </option>
+<option > Lebanese </option>
+<option > Syrian </option>
+<option > American</option>
+</select>
+</td>
+</tr>
+<tr>
+<td> Phone number: </td>
+<td>  <input type="number" id="phone" size="30"  placeholder="Your Phone number"></td>
+</tr>
+<tr>
+<td> Mail: </td>
+<td>  <input type="email" id="mail" size="30"  placeholder="Your email"></td>
+</tr>
+
+<tr>
+<td> Coming From: </td>
+<td> <select id="from">
+<option > -Please Select- </option>
+<option > USA </option>
+<option > France</option>
+<option > London</option>
+</select>
+</td>
+</tr>
+<tr>
+<td> Date of Arrival to United States </td>
+
+<td>  <input type="date" id="dateOfArr" size="30"  placeholder="DD/MM/YYYY"> </td>
+</tr>
+<tr>
+<td> Flight Name: </td>
+<td> <select id="flight">
+<option > -Please Select- </option>
+<option > Air France </option>
+<option > Mea</option>
+<option > Turkish airlines</option>
+</select>
+</td>
+</tr>
+<tr>
+
+<td> Gender: </td>
+<td> <input type="radio" name="g" id="male" > Male 
+<input type="radio" name= "g" id="female"> Female
+</td>
+</tr>
+
+</table>
+</fieldset>
+<br>
+<br>
+
+<fieldset>
+    <legend > Information about Covi19</legend>
+    Did you took COVID19 vaccine?
+    
+    <p>
+    <input type="checkbox" id="cBox"> 
+    I am vaccinated!
+    </p>
+    <p>
+    Please select the vaccin:
+    
+    <select  id="vax">
+    <option > -Please Select- </option>
+    <option > Pfizer </option>
+    <option > AstraZeneca </option>
+    <option > Moderna</option>
+    </select>
+    </p>
+    Have you ever undergone the specific COVID19 PCR test?
+    
+    <p>
+    <input type="radio" name="covid" id="Yes"> 
+    Yes 
+    <input type="radio" name="covid" id="No" > No
+    </p>
+    </fieldset>
+    <center>
+<input  type="button" value="Submit" onclick="validite()">
+<input  type ="reset" value="Reset"></center>
+</form>
+</body>
+
+
+</html> 
